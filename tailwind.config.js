@@ -12,6 +12,10 @@ module.exports = {
           400: '#9394A5',
           500: '#484B6A'
         }
+      },
+      fontFamily: {
+        'noto-sans-jp': ['Noto Sans JP', 'sans-serif'], 
+        'rampart-one-jp': ['Rampart One', 'sans-serif'], 
       }
     },
   },

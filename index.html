@@ -10,36 +10,49 @@
     <link rel="stylesheet" href="./styles/output.css">
     <script src="./js/main.js" defer></script>
 </head>
-<body class="font-noto-sans-jp">
+<body class="font-noto-sans-jp overflow-hidden">
     <p class="hidden bg-red-400 bg-green-400 text-light-100 font-rampart-one-jp"></p>
     <div id="background" class="h-screen bg-light-200">
         <nav class="h-[80px] w-[calc(100%-2.50em)] flex flex-row fixed m-5 bg-light-100 rounded-2xl z-20">
             <button onclick="dev()" class="h-5">Dev</button>
         </nav>
-        <header class="h-[60%] flex flex-col justify-between items-center pt-[calc(80px+2.50em)] pb-[2.50em]">
+        <header class="h-[54%] flex flex-col justify-between items-center pt-[calc(80px+2.50em)] pb-[2.50em]">
             <h1 id="after-answer" class="h-5 text-2xl text-light-100 font-medium"></h1>
             <h1 id="game-prompt" class="text-8xl text-red-400 font-medium">あ</h1>
             <h1 id="user-answer" class="h-5 text-2xl text-red-400 font-medium"></h1>
         </header>
-        <main class="h-[40%] w-full bg-light-100 rounded-t-2xl">
+        <main class="h-[46%] w-full bg-light-100 rounded-t-2xl">
             <div class="flex flex-row p-5 font-medium">
-                <button class="mr-2.5 text-red-400">Play</button>
-                <button class="ml-2.5 text-light-400">Settings</button>
+                <button onclick="changeStyle(this)" class="mr-2.5 text-red-400">Keboard</button>
+                <button onclick="changeStyle(this)" class="mx-2.5 text-light-400">Typing</button>
+                <!-- <button onclick="changeStyle(this)" class="ml-2.5 text-light-400">Writing</button> -->
             </div>
             <div class="w-full flex justify-center items-center text-center">
-                <table class="border-separate border-spacing-3">
+                <table class="border-separate border-spacing-1 md:border-spacing-3">
                     <tr>
                         <td class="h-10 w-24 key-button"><button onclick="inputAnswer(this.innerText)" class="h-full w-full">a</button></td>
                         <td class="h-10 w-24 key-button"><button onclick="inputAnswer(this.innerText)" class="h-full w-full">i</button></td>
                         <td class="h-10 w-24 key-button"><button onclick="inputAnswer(this.innerText)" class="h-full w-full">u</button></td>
                         <td class="h-10 w-24 key-button"><button onclick="inputAnswer(this.innerText)" class="h-full w-full">e</button></td>
                         <td class="h-10 w-24 key-button"><button onclick="inputAnswer(this.innerText)" class="h-full w-full">o</button></td>
+                        <td class="h-10 w-24 key-button"><button onclick="inputAnswer(this.innerText)" class="h-full w-full">na</button></td>
+                        <td class="h-10 w-24 key-button"><button onclick="inputAnswer(this.innerText)" class="h-full w-full">ni</button></td>
+                        <td class="h-10 w-24 key-button"><button onclick="inputAnswer(this.innerText)" class="h-full w-full">nu</button></td>
+                        <td class="h-10 w-24 key-button"><button onclick="inputAnswer(this.innerText)" class="h-full w-full">ne</button></td>
+                        <td class="h-10 w-24 key-button"><button onclick="inputAnswer(this.innerText)" class="h-full w-full">no</button></td>
+                        <td rowspan="2" class="h-20 w-48 key-button"><button onclick="unInputAnswer()" class="h-full w-full">Backspace</button></td>
+                    </tr>
+                    <tr>
                         <td class="h-10 w-24 key-button"><button onclick="inputAnswer(this.innerText)" class="h-full w-full">ka</button></td>
                         <td class="h-10 w-24 key-button"><button onclick="inputAnswer(this.innerText)" class="h-full w-full">ki</button></td>
                         <td class="h-10 w-24 key-button"><button onclick="inputAnswer(this.innerText)" class="h-full w-full">ku</button></td>
                         <td class="h-10 w-24 key-button"><button onclick="inputAnswer(this.innerText)" class="h-full w-full">ke</button></td>
                         <td class="h-10 w-24 key-button"><button onclick="inputAnswer(this.innerText)" class="h-full w-full">ko</button></td>
-                        <td rowspan="2" class="h-20 w-48 key-button"><button onclick="unInputAnswer()" class="h-full w-full">Backspace</button></td>
+                        <td class="h-10 w-24 key-button"><button onclick="inputAnswer(this.innerText)" class="h-full w-full">ha</button></td>
+                        <td class="h-10 w-24 key-button"><button onclick="inputAnswer(this.innerText)" class="h-full w-full">hi</button></td>
+                        <td class="h-10 w-24 key-button"><button onclick="inputAnswer(this.innerText)" class="h-full w-full">fu</button></td>
+                        <td class="h-10 w-24 key-button"><button onclick="inputAnswer(this.innerText)" class="h-full w-full">he</button></td>
+                        <td class="h-10 w-24 key-button"><button onclick="inputAnswer(this.innerText)" class="h-full w-full">ho</button></td>
                     </tr>
                     <tr>
                         <td class="h-10 w-24 key-button"><button onclick="inputAnswer(this.innerText)" class="h-full w-full">sa</button></td>
@@ -47,18 +60,6 @@
                         <td class="h-10 w-24 key-button"><button onclick="inputAnswer(this.innerText)" class="h-full w-full">su</button></td>
                         <td class="h-10 w-24 key-button"><button onclick="inputAnswer(this.innerText)" class="h-full w-full">se</button></td>
                         <td class="h-10 w-24 key-button"><button onclick="inputAnswer(this.innerText)" class="h-full w-full">so</button></td>
-                        <td class="h-10 w-24 key-button"><button onclick="inputAnswer(this.innerText)" class="h-full w-full">ta</button></td>
-                        <td class="h-10 w-24 key-button"><button onclick="inputAnswer(this.innerText)" class="h-full w-full">chi</button></td>
-                        <td class="h-10 w-24 key-button"><button onclick="inputAnswer(this.innerText)" class="h-full w-full">tsu</button></td>
-                        <td class="h-10 w-24 key-button"><button onclick="inputAnswer(this.innerText)" class="h-full w-full">te</button></td>
-                        <td class="h-10 w-24 key-button"><button onclick="inputAnswer(this.innerText)" class="h-full w-full">to</button></td>
-                    </tr>
-                    <tr>
-                        <td class="h-10 w-24 key-button"><button onclick="inputAnswer(this.innerText)" class="h-full w-full">na</button></td>
-                        <td class="h-10 w-24 key-button"><button onclick="inputAnswer(this.innerText)" class="h-full w-full">ni</button></td>
-                        <td class="h-10 w-24 key-button"><button onclick="inputAnswer(this.innerText)" class="h-full w-full">nu</button></td>
-                        <td class="h-10 w-24 key-button"><button onclick="inputAnswer(this.innerText)" class="h-full w-full">ne</button></td>
-                        <td class="h-10 w-24 key-button"><button onclick="inputAnswer(this.innerText)" class="h-full w-full">no</button></td>
                         <td class="h-10 w-24 key-button"><button onclick="inputAnswer(this.innerText)" class="h-full w-full">ma</button></td>
                         <td class="h-10 w-24 key-button"><button onclick="inputAnswer(this.innerText)" class="h-full w-full">mi</button></td>
                         <td class="h-10 w-24 key-button"><button onclick="inputAnswer(this.innerText)" class="h-full w-full">mu</button></td>
@@ -67,16 +68,29 @@
                         <td rowspan="2" class="h-20 w-48 key-button"><button onclick="submitAnswer()" class="h-full w-full">Enter</button></td>
                     </tr>
                     <tr>
+                        <td class="h-10 w-24 key-button"><button onclick="inputAnswer(this.innerText)" class="h-full w-full">ta</button></td>
+                        <td class="h-10 w-24 key-button"><button onclick="inputAnswer(this.innerText)" class="h-full w-full">chi</button></td>
+                        <td class="h-10 w-24 key-button"><button onclick="inputAnswer(this.innerText)" class="h-full w-full">tsu</button></td>
+                        <td class="h-10 w-24 key-button"><button onclick="inputAnswer(this.innerText)" class="h-full w-full">te</button></td>
+                        <td class="h-10 w-24 key-button"><button onclick="inputAnswer(this.innerText)" class="h-full w-full">to</button></td>
                         <td class="h-10 w-24 key-button"><button onclick="inputAnswer(this.innerText)" class="h-full w-full">ya</button></td>
+                        <td class="h-10 w-24"></td>
                         <td class="h-10 w-24 key-button"><button onclick="inputAnswer(this.innerText)" class="h-full w-full">yu</button></td>
+                        <td class="h-10 w-24"></td>
                         <td class="h-10 w-24 key-button"><button onclick="inputAnswer(this.innerText)" class="h-full w-full">yo</button></td>
-                        <td class="h-10 w-24 key-button"><button onclick="inputAnswer(this.innerText)" class="h-full w-full">wa</button></td>
-                        <td class="h-10 w-24 key-button"><button onclick="inputAnswer(this.innerText)" class="h-full w-full">wo</button></td>
+                    </tr>
+                    <tr>
                         <td class="h-10 w-24 key-button"><button onclick="inputAnswer(this.innerText)" class="h-full w-full">ra</button></td>
                         <td class="h-10 w-24 key-button"><button onclick="inputAnswer(this.innerText)" class="h-full w-full">ri</button></td>
                         <td class="h-10 w-24 key-button"><button onclick="inputAnswer(this.innerText)" class="h-full w-full">ru</button></td>
                         <td class="h-10 w-24 key-button"><button onclick="inputAnswer(this.innerText)" class="h-full w-full">re</button></td>
                         <td class="h-10 w-24 key-button"><button onclick="inputAnswer(this.innerText)" class="h-full w-full">ro</button></td>
+                        <td class="h-10 w-24 key-button"><button onclick="inputAnswer(this.innerText)" class="h-full w-full">wa</button></td>
+                        <td class="h-10 w-24"></td>
+                        <td class="h-10 w-24"></td>
+                        <td class="h-10 w-24"></td>
+                        <td class="h-10 w-24 key-button"><button onclick="inputAnswer(this.innerText)" class="h-full w-full">wo</button></td>
+                        <td class="h-10 w-24 key-button"><button onclick="inputAnswer(this.innerText)" class="h-full w-full">n</button></td>
                     </tr>
                 </table>
             </div>

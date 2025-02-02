@@ -4,6 +4,9 @@ function getRandomInt(max) {
 }
 
 
+// -----Navbar-----
+
+
 // -----Start Game-----
 const gamePrompt = document.getElementById('game-prompt')
 const hiraganaList = ['あ', 'い', 'う', 'え', 'お', 'か', 'き', 'く', 'け', 'こ', 'さ', 'し', 'す', 'せ', 'そ', 'た', 'ち', 'つ', 'て', 'と', 'な', 'に', 'ぬ', 'ね', 'の', 'は', 'ひ', 'ふ', 'へ', 'ほ', 'ま', 'み', 'む', 'め', 'も', 'や', 'ゆ', 'よ', 'ら', 'り', 'る', 'れ', 'ろ', 'わ', 'を', 'ん']
@@ -16,6 +19,20 @@ function startGame() {
     gamePrompt.innerText = newKana
 }
 startGame()
+
+
+// -----Change Input Style-----
+function changeStyle(inputStyle) {
+    let parent = inputStyle.parentElement
+    for (let i = 0; i < parent.childElementCount; i++) {
+        if (parent.children[i].classList.contains('text-red-400')) {
+            parent.children[i].classList.remove('text-red-400')
+            parent.children[i].classList.add('text-light-400')
+        }
+    }
+    inputStyle.classList.remove('text-light-400')
+    inputStyle.classList.add('text-red-400')
+}
 
 
 // -----Key Inputs-----
@@ -37,10 +54,6 @@ function unInputAnswer() {
     else {
         userAnswer.innerText = ''
     }
-}
-
-function dev() {
-    gamePrompt.innerText = 'あ'
 }
 
 function submitAnswer() {

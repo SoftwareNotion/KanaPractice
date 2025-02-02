@@ -4,6 +4,6 @@
 
 @layer components {
   .key-button {
-    @apply text-light-100 font-medium bg-light-300 rounded-lg transition-transform duration-100 hover:scale-[1.2] active:bg-red-400;
+    @apply text-light-400 font-medium bg-light-100 border-light-400 border-2 rounded-lg transition-transform duration-100 md:hover:scale-[1.2] active:bg-red-400 active:border-red-500 active:text-light-100;
   }
 }

@@ -9,8 +9,10 @@
     <link href="https://fonts.googleapis.com/css2?family=Noto+Sans+JP:wght@100..900&family=Rampart+One&display=swap" rel="stylesheet">
     <link rel="stylesheet" href="./styles/output.css">
     <script src="./js/base.js" async></script>
-    <script src="./js/game.js" async></script>
-    <script src="./js/input.js" async></script>
+    <script src="./js/game.js" defer></script>
+    <script src="./js/input.js" defer></script>
+    <script src="./js/drawInput.js" defer></script>
+    <script src="https://kit.fontawesome.com/94c9f77b8c.js" crossorigin="anonymous"></script>
 </head>
 <body class="font-noto-sans-jp overflow-hidden">
     <p class="hidden bg-red-400 bg-green-400 text-light-100 font-rampart-one-jp"></p>
@@ -27,7 +29,7 @@
             <div class="flex flex-row p-5 font-medium">
                 <button onclick="changeStyle(this)" class="mr-2.5 text-red-400">Keyboard</button>
                 <button onclick="changeStyle(this)" class="mx-2.5 text-light-400">Typing</button>
-                <!-- <button onclick="changeStyle(this)" class="ml-2.5 text-light-400">Writing</button> -->
+                <button onclick="changeStyle(this)" class="ml-2.5 text-light-400">Writing</button>
             </div>
             <div class="w-full flex justify-center items-center text-center">
                 <table id="kanaBoard" class="border-separate border-spacing-1 md:border-spacing-3">
@@ -42,7 +44,7 @@
                         <td class="h-10 w-24 key-button"><button onclick="inputAnswer(this.innerText)" class="h-full w-full">nu</button></td>
                         <td class="h-10 w-24 key-button"><button onclick="inputAnswer(this.innerText)" class="h-full w-full">ne</button></td>
                         <td class="h-10 w-24 key-button"><button onclick="inputAnswer(this.innerText)" class="h-full w-full">no</button></td>
-                        <td rowspan="2" class="h-20 w-48 key-button"><button onclick="unInputAnswer()" class="h-full w-full">Backspace</button></td>
+                        <td rowspan="2" colspan="2" class="h-20 w-48 key-button border-4"><button onclick="unInputAnswer()" class="h-full w-full">Backspace</button></td>
                     </tr>
                     <tr>
                         <td class="h-10 w-24 key-button"><button onclick="inputAnswer(this.innerText)" class="h-full w-full">ka</button></td>
@@ -67,7 +69,7 @@
                         <td class="h-10 w-24 key-button"><button onclick="inputAnswer(this.innerText)" class="h-full w-full">mu</button></td>
                         <td class="h-10 w-24 key-button"><button onclick="inputAnswer(this.innerText)" class="h-full w-full">me</button></td>
                         <td class="h-10 w-24 key-button"><button onclick="inputAnswer(this.innerText)" class="h-full w-full">mo</button></td>
-                        <td rowspan="2" class="h-20 w-48 key-button"><button onclick="submitAnswer()" class="h-full w-full">Enter</button></td>
+                        <td rowspan="2" colspan="2" class="h-20 w-48 key-button border-4"><button onclick="submitAnswer()" class="h-full w-full">Enter</button></td>
                     </tr>
                     <tr>
                         <td class="h-10 w-24 key-button"><button onclick="inputAnswer(this.innerText)" class="h-full w-full">ta</button></td>
@@ -93,11 +95,17 @@
                         <td class="h-10 w-24"></td>
                         <td class="h-10 w-24 key-button"><button onclick="inputAnswer(this.innerText)" class="h-full w-full">wo</button></td>
                         <td class="h-10 w-24 key-button"><button onclick="inputAnswer(this.innerText)" class="h-full w-full">n</button></td>
+                        <!-- <td class="h-10 w-24 key-button"><button onclick="inputAnswer(this.innerText)" class="h-full w-full">?</button></td> -->
+                        <td class="h-10 w-24 key-button border-4"><button disabled onclick="inputAnswer(this.innerText)" class="h-full w-full"><i class="fa-solid fa-repeat"></i></button></td>
                     </tr>
                 </table>
                 <div id="typingBoard" class="hidden w-full flex flex-col justify-center items-center">
                     <input type="text" class="h-32 w-[70%] mb-5 border-light-400 border-2 p-5 rounded-lg">
                     <button class="py-2 px-4 key-button">Submit</button>
+                </div>
+                <div id="drawingBoard" class="hidden w-full flex flex-col justify-center items-center">
+                    <canvas id="drawingCanvas" width="500" height="300" class="border-light-400 border-2 rounded-lg"></canvas>
+                    <!-- <button class="py-2 px-4 key-button">Submit</button> -->
                 </div>
             </div>
         </main>

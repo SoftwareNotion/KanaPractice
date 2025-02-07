@@ -8,8 +8,18 @@
   "keywords": [],
   "author": "",
   "license": "ISC",
-  "description": "",
   "dependencies": {
-    "tailwindcss": "^3.4.17"
-  }
+    "tailwindcss": "^3.4.17",
+    "tesseract.js": "^6.0.0"
+  },
+  "devDependencies": {},
+  "repository": {
+    "type": "git",
+    "url": "git+https://github.com/SoftwareNotion/KanaPractice.git"
+  },
+  "bugs": {
+    "url": "https://github.com/SoftwareNotion/KanaPractice/issues"
+  },
+  "homepage": "https://github.com/SoftwareNotion/KanaPractice#readme",
+  "description": ""
 }

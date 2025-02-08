@@ -2,7 +2,7 @@
 const userAnswer = document.getElementById('user-answer')
 
 // -----Change Input Style-----
-function changeStyle(inputStyle) {
+function changeStyle(inputStyle) {          
     let parent = inputStyle.parentElement
     for (let i = 0; i < parent.childElementCount; i++) {
         if (parent.children[i].classList.contains('text-red-400')) {
@@ -36,14 +36,12 @@ function changeInputStyle(inputStyle) {
         else if (inputStyle == boardTypes[1]) {
             Typing.classList.remove('hidden')
         }
-        document.cookie = `inputStyle=${inputStyle}`
     }
 }
 
 // Run Via Cookies
-changeInputStyle(decodeURIComponent(document.cookie))
-
-
+if (document.cookie) { changeInputStyle(decodeURIComponent(document.cookie)) }
+else ( console.log('No Cookies') )
 
 
 // -----Key Inputs-----
@@ -69,9 +67,11 @@ function unInputAnswer() {
 function submitAnswer() {
     const background = document.getElementById('background')
     const afterAnswer = document.getElementById('after-answer')
+    const TypingInput = document.getElementById('typingBoard').children[0]
     let userAnswerArray = userAnswer.innerText.split(' • ')
     let promptArray = gamePrompt.innerText.split('')
     let correctCount = 0
+    TypingInput.value = ''
     for (let i = 0; i < userAnswerArray.length; i++) {
         let index = ''
         index = phoneticList.indexOf(userAnswerArray[i])
@@ -81,35 +81,42 @@ function submitAnswer() {
         }
     }
     if (correctCount == promptArray.length) {
-        background.classList.remove('bg-light-200')
-        background.classList.add('bg-green-400')
+        background.classList.remove('bg-light-200', 'dark:bg-dark-200')
+        background.classList.add('bg-green-400', 'dark:bg-green-600')
 
         afterAnswer.innerText = gamePrompt.innerText
 
         gamePrompt.classList.add('font-rampart-one-jp')
         gamePrompt.classList.remove('text-red-400')
-        gamePrompt.classList.add('text-light-100')
+        gamePrompt.classList.add('text-light-100', 'dark:text-dark-100')
         gamePrompt.innerText = 'Correct!'
         
 
         userAnswer.classList.remove('text-red-400')
-        userAnswer.classList.add('text-light-100')
+        userAnswer.classList.add('text-light-100', 'dark:text-dark-100')
     }
     else {
-        background.classList.remove('bg-light-200')
-        background.classList.add('bg-red-400')
+        background.classList.remove('bg-light-200', 'dark:bg-dark-200')
+        background.classList.add('bg-red-400', 'dark:bg-red-600')
 
         afterAnswer.innerText = gamePrompt.innerText
 
         gamePrompt.classList.add('font-rampart-one-jp')
         gamePrompt.classList.remove('text-red-400')
-        gamePrompt.classList.add('text-light-100')
+        gamePrompt.classList.add('text-light-100', 'dark:text-dark-100')
         gamePrompt.innerText = 'Incorrect!'
 
         userAnswer.classList.remove('text-red-400')
-        userAnswer.classList.add('text-light-100')
+        userAnswer.classList.add('text-light-100', 'dark:text-dark-100')
     }
 }
 
-
-// -----Typing Inputs-----
+// -----Typing Input-----
+document.addEventListener('keyup', (event) => {
+    const TypingInput = document.getElementById('typingBoard').children[0]
+    newInput = TypingInput.value.replaceAll(' ', ' • ')
+    userAnswer.innerText = newInput
+    if (event.key == 'Enter') {
+        submitAnswer()
+    }
+})

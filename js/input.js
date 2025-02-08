@@ -16,26 +16,35 @@ function changeStyle(inputStyle) {
 }
 
 function changeInputStyle(inputStyle) {
-    const boardTypes = ['Keyboard', 'Typing']
-    const kanaKeys = document.getElementById('kanaBoard')
+    const boardTypes = ['Keyboard', 'Typing', 'Writing']
+    const KanaKeys = document.getElementById('kanaBoard')
     const Typing = document.getElementById('typingBoard')
-    kanaKeys.classList.add('hidden')
+    const Writing = document.getElementById('drawingBoard')
+    KanaKeys.classList.add('hidden')
     Typing.classList.add('hidden')
+    Writing.classList.add('hidden')
     if (typeof(inputStyle) == 'object') {
         if (inputStyle.innerText == boardTypes[0]) {
-            kanaKeys.classList.remove('hidden') }
+            KanaKeys.classList.remove('hidden') }
         else if (inputStyle.innerText == boardTypes[1]) {
             Typing.classList.remove('hidden')
+        }
+        else if (inputStyle.innerText == boardTypes[2]) {
+            Writing.classList.remove('hidden')
         }
         document.cookie = `inputStyle=${inputStyle.innerText}`
     }
     else {
         inputStyle = inputStyle.split('=')[1]
         if (inputStyle == boardTypes[0]) {
-            kanaKeys.classList.remove('hidden') }
+            KanaKeys.classList.remove('hidden') }
         else if (inputStyle == boardTypes[1]) {
             Typing.classList.remove('hidden')
         }
+        else if (inputStyle == boardTypes[2]) {
+            Writing.classList.remove('hidden')
+        }
+        document.cookie = `inputStyle=${inputStyle}`
     }
 }
 

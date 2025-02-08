@@ -597,6 +597,23 @@ video {
   }
 }
 
+.key-button:has(button:disabled) {
+  opacity: 0.5;
+}
+
+button:disabled {
+  cursor: not-allowed;
+}
+
+button:disabled:active {
+  --tw-border-opacity: 1;
+  border-color: rgb(147 148 165 / var(--tw-border-opacity, 1));
+  --tw-bg-opacity: 1;
+  background-color: rgb(250 250 250 / var(--tw-bg-opacity, 1));
+  --tw-text-opacity: 1;
+  color: rgb(147 148 165 / var(--tw-text-opacity, 1));
+}
+
 .fixed {
   position: fixed;
 }
@@ -745,6 +762,10 @@ video {
   border-width: 2px;
 }
 
+.border-4 {
+  border-width: 4px;
+}
+
 .border-light-400 {
   --tw-border-opacity: 1;
   border-color: rgb(147 148 165 / var(--tw-border-opacity, 1));
@@ -818,6 +839,11 @@ video {
   font-weight: 500;
 }
 
+.text-black {
+  --tw-text-opacity: 1;
+  color: rgb(0 0 0 / var(--tw-text-opacity, 1));
+}
+
 .text-light-100 {
   --tw-text-opacity: 1;
   color: rgb(250 250 250 / var(--tw-text-opacity, 1));
@@ -831,11 +857,6 @@ video {
 .text-red-400 {
   --tw-text-opacity: 1;
   color: rgb(248 113 113 / var(--tw-text-opacity, 1));
-}
-
-.text-black {
-  --tw-text-opacity: 1;
-  color: rgb(0 0 0 / var(--tw-text-opacity, 1));
 }
 
 @custom-variant dark (&:where(.dark, .dark *));

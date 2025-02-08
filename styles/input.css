@@ -8,4 +8,10 @@
   .key-button {
     @apply text-light-400 dark:text-dark-400 font-medium bg-light-100 dark:bg-dark-100 border-light-400 dark:border-dark-400 border-2 rounded-lg transition-transform duration-100 md:hover:scale-[1.2] active:bg-red-400 active:border-red-500 active:text-light-100;
   }
+  .key-button:has(button:disabled) {
+    @apply opacity-50;
+  }
+  button:disabled {
+    @apply cursor-not-allowed active:text-light-400 active:bg-light-100 active:border-light-400;
+  }
 }

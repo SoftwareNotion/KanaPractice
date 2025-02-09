@@ -4,7 +4,7 @@
   "main": "index.js",
   "type": "module",
   "scripts": {
-    "build": "npx tailwindcss -i styles/input.css -o styles/output.css --watch"
+    "buildcss": "npx tailwindcss -i styles/input.css -o styles/output.css --watch"
   },
   "keywords": [],
   "author": "",

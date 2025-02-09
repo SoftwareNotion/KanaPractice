@@ -31,5 +31,6 @@ async function recognizeText() {
     const worker = await Tesseract.createWorker('jpn');
     const ret = await worker.recognize(canvas.toDataURL('image/png'), { lang: 'jpn' });
     console.log(ret.data.text);
+    userAnswer.innerText = userAnswer.innerHTML + ret.data.text
     await worker.terminate();
 }

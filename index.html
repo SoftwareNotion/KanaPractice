@@ -52,7 +52,7 @@
             <div id="inputTypeBtns" class="flex flex-row p-5 font-medium">
                 <button onclick="changeInputStyle(this.innerText)" class="mr-2.5 text-red-400">Keyboard</button>
                 <button onclick="changeInputStyle(this.innerText)" class="mx-2.5 text-light-400">Typing</button>
-                <!-- <button onclick="changeInputStyle(this)" class="ml-2.5 text-light-400">Writing</button> -->
+                <!-- <button onclick="changeInputStyle(this.innerText)" class="ml-2.5 text-light-400">Writing</button> -->
             </div>
             <div class="w-full flex justify-center items-center text-center">
                 <table id="kanaBoard" class="border-separate border-spacing-1 md:border-spacing-3">
@@ -118,7 +118,6 @@
                         <td class="h-10 w-24"></td>
                         <td class="h-10 w-24 key-button"><button onclick="inputAnswer(this.innerText)" class="h-full w-full">wo</button></td>
                         <td class="h-10 w-24 key-button"><button onclick="inputAnswer(this.innerText)" class="h-full w-full">n</button></td>
-                        <!-- <td class="h-10 w-24 key-button"><button onclick="inputAnswer(this.innerText)" class="h-full w-full">?</button></td> -->
                         <td class="h-10 w-24 key-button border-4"><button disabled onclick="inputAnswer(this.innerText)" class="h-full w-full"><i class="fa-solid fa-repeat"></i></button></td>
                     </tr>
                 </table>
@@ -126,8 +125,8 @@
                     <input oninput="typingInupt()" type="text" class="h-32 w-[70%] mb-5 text-black dark:text-white bg-light-100 dark:bg-dark-100 border-light-400 dark:border-dark-400 border-2 p-5 rounded-lg">
                     <button onclick="submitAnswer()" class="py-2 px-4 key-button">Submit</button>
                 </div>
-                <div id="drawingBoard" class="hidden flex flex-col justify-center items-center">
-                    <div class="h-[200px] w-[70%]">
+                <div id="drawingBoard" class="w-full hidden flex flex-col justify-center items-center">
+                    <div class="h-full w-[50%] flex justify-center">
                         <canvas id="drawingCanvas" class="border-light-400 border-2 rounded-lg"></canvas>
                     </div>
                     <button onclick="recognizeText()" class="mt-5 py-2 px-4 key-button">Submit</button>

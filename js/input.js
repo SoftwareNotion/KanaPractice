@@ -2,55 +2,47 @@
 const userAnswer = document.getElementById('user-answer')
 
 // -----Change Input Style-----
-function changeStyle(inputStyle) {          
-    let parent = inputStyle.parentElement
-    for (let i = 0; i < parent.childElementCount; i++) {
-        if (parent.children[i].classList.contains('text-red-400')) {
-            parent.children[i].classList.remove('text-red-400')
-            parent.children[i].classList.add('text-light-400')
-        }
-    }
-    inputStyle.classList.remove('text-light-400')
-    inputStyle.classList.add('text-red-400')
-    changeInputStyle(inputStyle)
-}
-
+// Actually Changing the Input Style
 function changeInputStyle(inputStyle) {
     const boardTypes = ['Keyboard', 'Typing', 'Writing']
+    const inputTypes = document.getElementById('inputTypeBtns').children
     const KanaKeys = document.getElementById('kanaBoard')
     const Typing = document.getElementById('typingBoard')
     const Writing = document.getElementById('drawingBoard')
     KanaKeys.classList.add('hidden')
     Typing.classList.add('hidden')
     Writing.classList.add('hidden')
-    if (typeof(inputStyle) == 'object') {
-        if (inputStyle.innerText == boardTypes[0]) {
-            KanaKeys.classList.remove('hidden') }
-        else if (inputStyle.innerText == boardTypes[1]) {
-            Typing.classList.remove('hidden')
-        }
-        else if (inputStyle.innerText == boardTypes[2]) {
-            Writing.classList.remove('hidden')
-        }
-        document.cookie = `inputStyle=${inputStyle.innerText}`
+
+    // Change Board Visibility
+    if (inputStyle == boardTypes[0]) {
+        KanaKeys.classList.remove('hidden') }
+    else if (inputStyle == boardTypes[1]) {
+        Typing.classList.remove('hidden')
     }
-    else {
-        inputStyle = inputStyle.split('=')[1]
-        if (inputStyle == boardTypes[0]) {
-            KanaKeys.classList.remove('hidden') }
-        else if (inputStyle == boardTypes[1]) {
-            Typing.classList.remove('hidden')
-        }
-        else if (inputStyle == boardTypes[2]) {
-            Writing.classList.remove('hidden')
-        }
-        document.cookie = `inputStyle=${inputStyle}`
+    else if (inputStyle == boardTypes[2]) {
+        Writing.classList.remove('hidden')
     }
+
+    // Change Buttons Color
+    for (let i = 0; i < inputTypes.length; i++) {
+        if (inputTypes[i].innerText == inputStyle) {
+            inputTypes[i].classList.remove('text-light-400')
+            inputTypes[i].classList.add('text-red-400')
+            console.log(inputTypes[i].innerText)
+        }
+        else {
+            inputTypes[i].classList.remove('text-red-400')
+            inputTypes[i].classList.add('text-light-400')
+        }
+    }
+
+    // Set Cookie
+    document.cookie = `inputStyle=${inputStyle}`
 }
 
 // Run Via Cookies
-if (document.cookie) { changeInputStyle(decodeURIComponent(document.cookie)) }
-else ( console.log('No Cookies') )
+if (getCookie('inputStyle')) { changeInputStyle(decodeURIComponent(getCookie('inputStyle'))) }
+else ( console.log('No Cookie') )
 
 
 // -----Key Inputs-----
@@ -73,59 +65,16 @@ function unInputAnswer() {
     }
 }
 
-function submitAnswer() {
-    const background = document.getElementById('background')
-    const afterAnswer = document.getElementById('after-answer')
-    const TypingInput = document.getElementById('typingBoard').children[0]
-    let userAnswerArray = userAnswer.innerText.split(' • ')
-    let promptArray = gamePrompt.innerText.split('')
-    let correctCount = 0
-    TypingInput.value = ''
-    for (let i = 0; i < userAnswerArray.length; i++) {
-        let index = ''
-        index = phoneticList.indexOf(userAnswerArray[i])
-        userAnswerArray[i] = hiraganaList[index]
-        if (userAnswerArray[i] == promptArray[i]) {
-            correctCount += 1
-        }
-    }
-    if (correctCount == promptArray.length) {
-        background.classList.remove('bg-light-200', 'dark:bg-dark-200')
-        background.classList.add('bg-green-400', 'dark:bg-green-600')
-
-        afterAnswer.innerText = gamePrompt.innerText
-
-        gamePrompt.classList.add('font-rampart-one-jp')
-        gamePrompt.classList.remove('text-red-400')
-        gamePrompt.classList.add('text-light-100', 'dark:text-dark-100')
-        gamePrompt.innerText = 'Correct!'
-        
-
-        userAnswer.classList.remove('text-red-400')
-        userAnswer.classList.add('text-light-100', 'dark:text-dark-100')
-    }
-    else {
-        background.classList.remove('bg-light-200', 'dark:bg-dark-200')
-        background.classList.add('bg-red-400', 'dark:bg-red-600')
-
-        afterAnswer.innerText = gamePrompt.innerText
-
-        gamePrompt.classList.add('font-rampart-one-jp')
-        gamePrompt.classList.remove('text-red-400')
-        gamePrompt.classList.add('text-light-100', 'dark:text-dark-100')
-        gamePrompt.innerText = 'Incorrect!'
-
-        userAnswer.classList.remove('text-red-400')
-        userAnswer.classList.add('text-light-100', 'dark:text-dark-100')
-    }
-}
-
 // -----Typing Input-----
-document.addEventListener('keyup', (event) => {
+function typingInupt() {
     const TypingInput = document.getElementById('typingBoard').children[0]
     newInput = TypingInput.value.replaceAll(' ', ' • ')
     userAnswer.innerText = newInput
-    if (event.key == 'Enter') {
-        submitAnswer()
+}
+document.addEventListener('keyup', (event) => {
+    if (getCookie('inputStyle') !== 'Keyboard') {
+        if (event.key == 'Enter') {
+            submitAnswer()
+        }
     }
 })

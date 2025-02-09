@@ -10,3 +10,52 @@ function startGame() {
     gamePrompt.innerText = newKana
 }
 startGame()
+
+// -----Submit Answer-----
+function submitAnswer() {
+    const background = document.getElementById('background')
+    const afterAnswer = document.getElementById('after-answer')
+    const TypingInput = document.getElementById('typingBoard').children[0]
+    let userAnswerArray = userAnswer.innerText.split(' • ')
+    let promptArray = gamePrompt.innerText.split('')
+    let correctCount = 0
+    TypingInput.value = ''
+    for (let i = 0; i < userAnswerArray.length; i++) {
+        let index = ''
+        index = phoneticList.indexOf(userAnswerArray[i])
+        userAnswerArray[i] = hiraganaList[index]
+        if (userAnswerArray[i] == promptArray[i]) {
+            correctCount += 1
+        }
+    }
+    if (correctCount == promptArray.length) {
+        background.classList.remove('bg-light-200', 'dark:bg-dark-200')
+        background.classList.add('bg-green-400', 'dark:bg-green-600')
+        background.classList.add('transition-[transform,background-color]')
+
+        afterAnswer.innerText = gamePrompt.innerText
+
+        gamePrompt.classList.add('font-rampart-one-jp')
+        gamePrompt.classList.remove('text-red-400')
+        gamePrompt.classList.add('text-light-100', 'dark:text-dark-100')
+        gamePrompt.innerText = 'Correct!'
+        
+
+        userAnswer.classList.remove('text-red-400')
+        userAnswer.classList.add('text-light-100', 'dark:text-dark-100')
+    }
+    else {
+        background.classList.remove('bg-light-200', 'dark:bg-dark-200')
+        background.classList.add('bg-red-400', 'dark:bg-red-600')
+
+        afterAnswer.innerText = gamePrompt.innerText
+
+        gamePrompt.classList.add('font-rampart-one-jp')
+        gamePrompt.classList.remove('text-red-400')
+        gamePrompt.classList.add('text-light-100', 'dark:text-dark-100')
+        gamePrompt.innerText = 'Incorrect!'
+
+        userAnswer.classList.remove('text-red-400')
+        userAnswer.classList.add('text-light-100', 'dark:text-dark-100')
+    }
+}

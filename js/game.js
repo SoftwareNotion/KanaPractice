@@ -15,6 +15,7 @@ startGame()
 function submitAnswer() {
     const background = document.getElementById('background')
     const afterAnswer = document.getElementById('after-answer')
+    const correctAnswer = document.getElementById('correct-answer')
     const TypingInput = document.getElementById('typingBoard').children[0]
     let userAnswerArray = userAnswer.innerText.split(' • ')
     let promptArray = gamePrompt.innerText.split('')
@@ -27,7 +28,11 @@ function submitAnswer() {
         if (userAnswerArray[i] == promptArray[i]) {
             correctCount += 1
         }
+        else {
+            correctCount -= 1
+        }
     }
+    // If Answer is Correct
     if (correctCount == promptArray.length) {
         background.classList.remove('bg-light-200', 'dark:bg-dark-200')
         background.classList.add('bg-green-400', 'dark:bg-green-600')
@@ -44,7 +49,14 @@ function submitAnswer() {
         userAnswer.classList.remove('text-red-400')
         userAnswer.classList.add('text-light-100', 'dark:text-dark-100')
     }
+    // If Answer is Incorrect
     else {
+        correctAnswer.innerHTML = '&nbsp;/&nbsp;'
+        for (let i = 0; i < gamePrompt.innerText.length; i++) {
+            let index = ''
+            index = hiraganaList.indexOf(gamePrompt.innerText[i])
+            correctAnswer.innerHTML = correctAnswer.innerText += phoneticList[index] + '&nbsp;'
+        }
         background.classList.remove('bg-light-200', 'dark:bg-dark-200')
         background.classList.add('bg-red-400', 'dark:bg-red-600')
 

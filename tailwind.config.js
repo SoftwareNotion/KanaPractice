@@ -22,7 +22,8 @@ module.exports = {
       },
       fontFamily: {
         'noto-sans-jp': ['Noto Sans JP', 'sans-serif'], 
-        'rampart-one-jp': ['Rampart One', 'sans-serif'], 
+        'rampart-one-jp': ['Rampart One', 'sans-serif'],
+        'dm-sans': ['DM Sans', 'sans-serif'],
       }
     },
   },

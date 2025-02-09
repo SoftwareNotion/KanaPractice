@@ -15,12 +15,8 @@ function getCookie(name) {
 // -----Dark Mode-----
 function switchViaCheckbox(checkbox) {
     let mode = ''
-    if (checkbox.checked) {
-        mode = 'on'
-    }
-    else {
-        mode = 'off'
-    }
+    if (checkbox.checked) { mode = 'on' }
+    else { mode = 'off' }
     switchTheme(mode)
 }
 

@@ -11,11 +11,32 @@ function startGame() {
 }
 startGame()
 
+function resetGame() {
+    const background = document.getElementById('background')
+    const afterAnswer = document.getElementById('after-answer')
+    const correctAnswer = document.getElementById('correct-answer')
+    background.classList.remove('bg-green-400', 'dark:bg-green-600', 'bg-red-400', 'dark:bg-red-600')
+    background.classList.add('bg-light-200', 'dark:bg-dark-200')
+
+    afterAnswer.innerText = ''
+    correctAnswer.innerText = ''
+
+    gamePrompt.classList.remove('font-rampart-one-jp')
+    gamePrompt.classList.remove('text-light-100', 'dark:text-dark-100')
+    gamePrompt.classList.add('text-red-400')
+
+    userAnswer.classList.remove('text-light-100', 'dark:text-dark-100')
+    userAnswer.classList.add('text-red-400')
+    userAnswer.innerText = ''
+    startGame()
+}
+
 // -----Submit Answer-----
 function submitAnswer() {
     const background = document.getElementById('background')
     const afterAnswer = document.getElementById('after-answer')
     const correctAnswer = document.getElementById('correct-answer')
+    const Timer = document.getElementById('answer-timer')
     const TypingInput = document.getElementById('typingBoard').children[0]
     let userAnswerArray = userAnswer.innerText.split(' • ')
     let promptArray = gamePrompt.innerText.split('')
@@ -36,7 +57,6 @@ function submitAnswer() {
     if (correctCount == promptArray.length) {
         background.classList.remove('bg-light-200', 'dark:bg-dark-200')
         background.classList.add('bg-green-400', 'dark:bg-green-600')
-        background.classList.add('transition-[transform,background-color]')
 
         afterAnswer.innerText = gamePrompt.innerText
 
@@ -44,7 +64,6 @@ function submitAnswer() {
         gamePrompt.classList.remove('text-red-400')
         gamePrompt.classList.add('text-light-100', 'dark:text-dark-100')
         gamePrompt.innerText = 'Correct!'
-        
 
         userAnswer.classList.remove('text-red-400')
         userAnswer.classList.add('text-light-100', 'dark:text-dark-100')
@@ -70,4 +89,20 @@ function submitAnswer() {
         userAnswer.classList.remove('text-red-400')
         userAnswer.classList.add('text-light-100', 'dark:text-dark-100')
     }
+
+    // Timer
+    let timeLeft = 3.00
+    function timerCountDown() {
+        if (timeLeft > 0) {
+            setTimeout(() => {
+                timeLeft -= 0.01
+                Timer.innerText = timeLeft.toFixed(2)
+                timerCountDown()
+            }, 10);
+        } else {
+            Timer.innerText = ''
+            resetGame()
+        }
+    }
+    timerCountDown()
 }

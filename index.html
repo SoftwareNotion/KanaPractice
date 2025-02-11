@@ -7,12 +7,12 @@
     <link rel="preconnect" href="https://fonts.googleapis.com">
     <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
     <link href="https://fonts.googleapis.com/css2?family=DM+Sans:ital,opsz,wght@0,9..40,100..1000;1,9..40,100..1000&family=Noto+Sans+JP:wght@100..900&family=Rampart+One&display=swap" rel="stylesheet">
-    <link rel="stylesheet" href="./styles/output.css">
-    <script src="./js/base.js" defer></script>
+    <link rel="stylesheet" href="./static/styles/output.css">
+    <script src="./static/js/base.js" defer></script>
     <script type="module" src="./node_modules/tesseract.js/dist/tesseract.min.js"></script>
-    <script src="./js/game.js" defer></script>
-    <script src="./js/input.js" defer></script>
-    <script src="./js/drawInput.js" defer></script>
+    <script src="./static/js/game.js" defer></script>
+    <script src="./static/js/input.js" defer></script>
+    <script src="./static/js/drawInput.js" defer></script>
     <script src="https://kit.fontawesome.com/94c9f77b8c.js" crossorigin="anonymous"></script>
 </head>
 <body class="font-dm-sans font-medium overflow-hidden bg-black">
@@ -28,8 +28,8 @@
     <div id="background" class="h-screen text-dark-100 dark:text-light-100 bg-light-200 dark:bg-dark-200 transition-[transform] duration-500 z-0">
         <nav class="h-[80px] w-[calc(100%-2.50em)] flex flex-row justify-between items-center fixed m-5 bg-light-100 dark:bg-dark-100 rounded-2xl z-2">
             <div class="flex flex-row">
-                <img class="hidden dark:block h-[35px] mx-4" src="./img/notion.svg" alt="">
-                <img class="block dark:hidden h-[35px] mx-4" src="./img/darknotion.svg" alt="">
+                <img class="hidden dark:block h-[35px] mx-4" src="./static/img/notion.svg" alt="">
+                <img class="block dark:hidden h-[35px] mx-4" src="./static/img/darknotion.svg" alt="">
                 <div class="bg-light-300 dark:bg-dark-300 py-1 px-3 rounded-xl cursor-pointer">
                     <h1 class="text-lg">Kana Phonetics<!--<i class="fa-solid fa-chevron-down pl-2"></i>--></h1>
                 </div>
@@ -40,10 +40,14 @@
                 <i onclick="toggleNavigation()" class="fa-solid fa-bars ml-5 mr-10 text-2xl dark:text-white cursor-pointer"></i>
             </div>
         </nav>
-        <header class="h-[54%] pt-[calc(80px+2.50em)] pb-[2.50em] flex flex-col justify-between items-center font-noto-sans-jp">
-            <div class="flex flex-row">
-                <h1 id="after-answer" class="h-5 text-2xl text-light-100 dark:text-dark-100 font-medium"></h1>
-                <h1 id="correct-answer" class="h-5 text-2xl text-light-100 dark:text-dark-100 font-medium"></h1>
+        <header class="h-[54%] pt-[calc(80px+2.50em)] pb-[2.50em] flex flex-col justify-between items-center text-2xl text-light-100 dark:text-dark-100 font-medium font-noto-sans-jp">
+            <div class="w-full flex flex-row justify-between">
+                <p id="answer-timer" class="w-[20%] ml-7 text-lg"></p>
+                <span class="flex flex-row">
+                    <h1 id="after-answer" class="h-5"></h1>
+                    <h1 id="correct-answer" class="h-5"></h1>
+                </span>
+                <div class="w-[20%] mr-7"></div>
             </div>
             <h1 id="game-prompt" class="text-8xl text-red-400 font-medium">あ</h1>
             <h1 id="user-answer" class="h-5 text-2xl text-red-400 font-medium"></h1>

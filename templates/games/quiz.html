@@ -1,0 +1,53 @@
+<!DOCTYPE html>
+<html lang="en" class="light">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Kana Quiz</title>
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link href="https://fonts.googleapis.com/css2?family=DM+Sans:ital,opsz,wght@0,9..40,100..1000;1,9..40,100..1000&family=Noto+Sans+JP:wght@100..900&family=Rampart+One&display=swap" rel="stylesheet">
+    <link rel="stylesheet" href="../../../static/styles/output.css">
+    <script src="../../../static/js/base.js" defer></script>
+    <script src="https://kit.fontawesome.com/94c9f77b8c.js" crossorigin="anonymous"></script>
+</head>
+<body class="font-dm-sans font-medium overflow-x-hidden bg-black">
+    <span class="hidden bg-red-400 dark:bg-red-600 bg-green-400 dark:bg-green-600 text-light-100 dark:text-dark-100 font-rampart-one-jp"></span>
+    <nav id="navigation" class="h-screen w-full flex justify-end items-center fixed top-0 right-0 text-white -z-20">
+        <i onclick="toggleNavigation()" class="fa-solid fa-x absolute top-20 right-20 text-3xl cursor-pointer"></i>
+        <div class="w-[40%] flex flex-col justify-center items-center">
+            <p class="text-3xl my-3">Home</p>
+            <p class="text-3xl my-3">Games</p>
+            <p class="text-3xl my-3">About</p>
+        </div>
+    </nav>
+    <div id="background" class="h-screen text-dark-100 dark:text-light-100 bg-light-200 dark:bg-dark-200 transition-[transform] duration-500 z-0">
+        <nav class="h-[80px] w-[calc(100%-2.50em)] flex flex-row justify-between items-center fixed m-5 bg-light-100 dark:bg-dark-100 rounded-2xl z-2">
+            <div class="flex flex-row">
+                <img class="hidden dark:block h-[35px] mx-4" src="../../../static/img/notion.svg" alt="">
+                <img class="block dark:hidden h-[35px] mx-4" src="../../../static/img/darknotion.svg" alt="">
+                <div class="bg-light-300 dark:bg-dark-300 py-1 px-3 rounded-xl cursor-pointer">
+                    <h1 class="text-lg">Kana Quiz<!--<i class="fa-solid fa-chevron-down pl-2"></i>--></h1>
+                </div>
+            </div>
+            <div>
+                <input onchange="switchViaCheckbox(this)" type="checkbox" name="toggleDarkmode" id="toggleDarkmode">
+                <label for="toggleDarkmode" class="pl-2 pr-5 dark:text-white cursor-pointer">Dark Mode</label>
+                <i onclick="toggleNavigation()" class="fa-solid fa-bars ml-5 mr-10 text-2xl dark:text-white cursor-pointer"></i>
+            </div>
+        </nav>
+        <main class="pt-[calc(80px+2.50em)] rounded-t-2xl">
+            <table class="w-auto">
+                <tr class="rounded-lg">
+                    <td class="py-2 px-5 bg-light-500">1</td>
+                    <td class="py-2 px-5">2</td>
+                </tr>
+                <tr>
+                    <td class="py-2 px-5 bg-light-500">1</td>
+                    <td class="py-2 px-5">2</td>
+                </tr>
+            </table>
+        </main>
+    </div>
+</body>
+</html>

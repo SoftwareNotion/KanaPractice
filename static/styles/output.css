@@ -930,10 +930,6 @@ button:disabled {
   padding-left: 0.5rem;
 }
 
-.pr-5 {
-  padding-right: 1.25rem;
-}
-
 .pt-\[calc\(80px\+2\.50em\)\] {
   padding-top: calc(80px + 2.50em);
 }
@@ -1016,6 +1012,24 @@ button:disabled {
 
 .duration-500 {
   transition-duration: 500ms;
+}
+
+.img-checkbox input {
+  display: none;
+}
+
+.img-checkbox span {
+  display: inline-block;
+  width: 40px;
+  height: 40px;
+  background-image: url(/static/img/moon2.svg);
+  /* default image */
+  background-size: cover;
+}
+
+.img-checkbox input:checked + span {
+  background-image: url(/static/img/sun2.svg);
+  /* image when checked */
 }
 
 .dark\:block:is(.dark *) {

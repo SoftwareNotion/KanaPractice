@@ -91,7 +91,7 @@ function submitAnswer() {
     }
 
     // Timer
-    let timeLeft = 3.00
+    let timeLeft = 1.00
     function timerCountDown() {
         if (timeLeft > 0) {
             setTimeout(() => {

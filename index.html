@@ -34,9 +34,11 @@
                     <h1 class="text-lg">Kana Phonetics<!--<i class="fa-solid fa-chevron-down pl-2"></i>--></h1>
                 </div>
             </div>
-            <div>
-                <input onchange="switchViaCheckbox(this)" type="checkbox" name="toggleDarkmode" id="toggleDarkmode">
-                <label for="toggleDarkmode" class="pl-2 pr-5 dark:text-white cursor-pointer">Dark Mode</label>
+            <div class="flex flex-row">
+                <label class="img-checkbox">
+                    <input onchange="switchViaCheckbox(this)" type="checkbox" name="toggleDarkmode" id="toggleDarkmode"/>
+                    <span></span>
+                </label>
                 <i onclick="toggleNavigation()" class="fa-solid fa-bars ml-5 mr-10 text-2xl dark:text-white cursor-pointer"></i>
             </div>
         </nav>

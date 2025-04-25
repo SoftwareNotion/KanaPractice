@@ -13,3 +13,20 @@
     @apply cursor-not-allowed;
   }
 }
+
+.img-checkbox input {
+  display: none;
+}
+
+.img-checkbox span {
+  display: inline-block;
+  width: 40px;
+  height: 40px;
+  background-image: url(/static/img/moon2.svg); /* default image */
+  background-size: cover;
+}
+
+.img-checkbox input:checked + span {
+  background-image: url(/static/img/sun2.svg); /* image when checked */
+  
+}

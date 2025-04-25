@@ -1,0 +1,14 @@
+<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 100 100">
+  <!-- Sun circle -->
+  <circle cx="50" cy="50" r="20" fill="white"></circle>
+
+  <!-- Smaller Triangular rays -->
+  <polygon points="50,5 47,12 53,12" fill="white"></polygon>
+  <polygon points="50,95 47,88 53,88" fill="white"></polygon>
+  <polygon points="5,50 12,47 12,53" fill="white"></polygon>
+  <polygon points="95,50 88,47 88,53" fill="white"></polygon>
+  <polygon points="22,22 28,28 20,30" fill="white"></polygon>
+  <polygon points="78,22 72,28 80,30" fill="white"></polygon>
+  <polygon points="22,78 28,72 20,70" fill="white"></polygon>
+  <polygon points="78,78 72,72 80,70" fill="white"></polygon>
+</svg>

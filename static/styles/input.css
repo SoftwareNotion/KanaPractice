@@ -14,14 +14,18 @@
   }
 }
 
+.img-checkbox {
+  height: 35px;
+}
+
 .img-checkbox input {
   display: none;
 }
 
 .img-checkbox span {
   display: inline-block;
-  width: 40px;
-  height: 40px;
+  width: 35px;
+  height: 35px;
   background-image: url(/static/img/moon2.svg); /* default image */
   background-size: cover;
 }
